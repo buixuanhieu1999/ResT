@@ -1,0 +1,192 @@
+setup={
+  "script": "train_gpds_sampled.py",
+  "session_id": 1,
+  "seed": 2026,
+  "device": "Tesla T4",
+  "parameters": 96980311,
+  "gpds_root": "/content/rest_gpds_32pairs_data/gpds",
+  "writers_found": 150,
+  "train_writers_count": 120,
+  "test_writers_count": 30,
+  "train_pairs_per_epoch": 3840,
+  "eval_pairs_per_epoch": 1920,
+  "planned_train_pairs_total": 38400,
+  "planned_eval_pairs_total": 19200,
+  "planned_total_pairs_train_plus_eval": 57600,
+  "pairs_per_training_writer_per_epoch": 32,
+  "pairs_per_test_writer": 64,
+  "batch_size": 32,
+  "epochs": 10,
+  "learning_rate": 5e-05,
+  "random_erasing": false,
+  "augmentation": [
+    "Gaussian blur + Otsu + inversion + centering",
+    "training only: random rotation [-5,+5] degrees",
+    "training only: horizontal flip p=0.5",
+    "training only: random 224x224 crop from 256x256",
+    "optional RandomErasing if --random-erasing is used"
+  ],
+  "normalization": [
+    "ImageNet input mean/std",
+    "BatchNorm in shared Conv, SPD-Conv, and ResNet-18",
+    "GroupNorm in SCConv SRU",
+    "LayerNorm in ViT"
+  ],
+  "initialization": {
+    "source": "Google ViT-B/16 ImageNet-21k",
+    "path": "/content/drive/MyDrive/ResT/ViT-B_16.npz",
+    "tensors": 150,
+    "elements": 85798656
+  }
+}
+START GPDS sampled training: 10 epochs, 3840 train pairs/epoch, 1920 eval pairs/epoch
+session=1 epoch=1/10 step=1/120 loss=55.07086 pairs_per_sec=1.01 eta~15h 49m 58s peak_vram_gb=5.36
+session=1 epoch=1/10 step=10/120 loss=56.28861 pairs_per_sec=6.80 eta~2h 20m 30s peak_vram_gb=5.81
+session=1 epoch=1/10 step=20/120 loss=29.31826 pairs_per_sec=9.27 eta~1h 42m 26s peak_vram_gb=5.81
+session=1 epoch=1/10 step=30/120 loss=19.96627 pairs_per_sec=10.29 eta~1h 31m 43s peak_vram_gb=5.81
+session=1 epoch=1/10 step=40/120 loss=15.19599 pairs_per_sec=11.02 eta~1h 25m 13s peak_vram_gb=5.81
+session=1 epoch=1/10 step=50/120 loss=12.28083 pairs_per_sec=11.43 eta~1h 21m 39s peak_vram_gb=5.81
+session=1 epoch=1/10 step=60/120 loss=10.30080 pairs_per_sec=11.69 eta~1h 19m 22s peak_vram_gb=5.81
+session=1 epoch=1/10 step=70/120 loss=8.88181 pairs_per_sec=11.99 eta~1h 16m 58s peak_vram_gb=5.81
+session=1 epoch=1/10 step=80/120 loss=7.81673 pairs_per_sec=12.12 eta~1h 15m 43s peak_vram_gb=5.81
+session=1 epoch=1/10 step=90/120 loss=6.98013 pairs_per_sec=12.29 eta~1h 14m 12s peak_vram_gb=5.81
+session=1 epoch=1/10 step=100/120 loss=6.30718 pairs_per_sec=12.40 eta~1h 13m 06s peak_vram_gb=5.81
+session=1 epoch=1/10 step=110/120 loss=5.75682 pairs_per_sec=12.48 eta~1h 12m 12s peak_vram_gb=5.81
+session=1 epoch=1/10 step=120/120 loss=5.29834 pairs_per_sec=12.68 eta~1h 10m 41s peak_vram_gb=5.81
+evaluation={"epoch": 1, "train_loss": 5.2983380323896805, "processed_train_pairs": 3840, "seconds": 434.06018018722534, "accuracy": 0.6515625, "threshold": 0.5590423280745744, "auc": 0.7041265190972222, "eer": 0.3515625, "eer_threshold": 0.5348168831318616, "far_at_eer": 0.353125, "frr_at_eer": 0.35, "positive_mean_distance": 0.5108487010002136, "negative_mean_distance": 0.6894198060035706}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.6516 auc=0.7041
+session=1 epoch=2/10 step=1/120 loss=0.23888 pairs_per_sec=6.27 eta~2h 17m 42s peak_vram_gb=5.81
+session=1 epoch=2/10 step=10/120 loss=0.23537 pairs_per_sec=12.33 eta~1h 09m 40s peak_vram_gb=5.81
+session=1 epoch=2/10 step=20/120 loss=0.24140 pairs_per_sec=13.47 eta~1h 03m 21s peak_vram_gb=5.81
+session=1 epoch=2/10 step=30/120 loss=0.23809 pairs_per_sec=13.47 eta~1h 02m 56s peak_vram_gb=5.81
+session=1 epoch=2/10 step=40/120 loss=0.23729 pairs_per_sec=13.63 eta~1h 01m 50s peak_vram_gb=5.81
+session=1 epoch=2/10 step=50/120 loss=0.23514 pairs_per_sec=13.64 eta~1h 01m 23s peak_vram_gb=5.81
+session=1 epoch=2/10 step=60/120 loss=0.23119 pairs_per_sec=13.70 eta~1h 00m 45s peak_vram_gb=5.81
+session=1 epoch=2/10 step=70/120 loss=0.22761 pairs_per_sec=13.73 eta~1h 00m 12s peak_vram_gb=5.81
+session=1 epoch=2/10 step=80/120 loss=0.22618 pairs_per_sec=13.62 eta~1h 00m 18s peak_vram_gb=5.81
+session=1 epoch=2/10 step=90/120 loss=0.22529 pairs_per_sec=13.65 eta~59m 48s peak_vram_gb=5.81
+session=1 epoch=2/10 step=100/120 loss=0.22287 pairs_per_sec=13.60 eta~59m 38s peak_vram_gb=5.81
+session=1 epoch=2/10 step=110/120 loss=0.22216 pairs_per_sec=13.64 eta~59m 03s peak_vram_gb=5.81
+session=1 epoch=2/10 step=120/120 loss=0.22174 pairs_per_sec=13.66 eta~58m 33s peak_vram_gb=5.81
+evaluation={"epoch": 2, "train_loss": 0.22174109381934007, "processed_train_pairs": 3840, "seconds": 412.2155945301056, "accuracy": 0.7052083333333333, "threshold": 0.49964807847142223, "auc": 0.7599793836805555, "eer": 0.3041666666666667, "eer_threshold": 0.4620674943774939, "far_at_eer": 0.30520833333333336, "frr_at_eer": 0.303125, "positive_mean_distance": 0.41065865755081177, "negative_mean_distance": 0.6201487183570862}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7052 auc=0.7600
+session=1 epoch=3/10 step=1/120 loss=0.20448 pairs_per_sec=6.77 eta~1h 53m 18s peak_vram_gb=5.81
+session=1 epoch=3/10 step=10/120 loss=0.19768 pairs_per_sec=9.87 eta~1h 17m 17s peak_vram_gb=5.81
+session=1 epoch=3/10 step=20/120 loss=0.21188 pairs_per_sec=10.98 eta~1h 08m 59s peak_vram_gb=5.81
+session=1 epoch=3/10 step=30/120 loss=0.20639 pairs_per_sec=11.90 eta~1h 03m 11s peak_vram_gb=5.81
+session=1 epoch=3/10 step=40/120 loss=0.20805 pairs_per_sec=12.12 eta~1h 01m 35s peak_vram_gb=5.81
+session=1 epoch=3/10 step=50/120 loss=0.20731 pairs_per_sec=12.42 eta~59m 41s peak_vram_gb=5.81
+session=1 epoch=3/10 step=60/120 loss=0.20549 pairs_per_sec=12.51 eta~58m 49s peak_vram_gb=5.81
+session=1 epoch=3/10 step=70/120 loss=0.20415 pairs_per_sec=12.61 eta~57m 56s peak_vram_gb=5.81
+session=1 epoch=3/10 step=80/120 loss=0.20437 pairs_per_sec=12.74 eta~56m 55s peak_vram_gb=5.81
+session=1 epoch=3/10 step=90/120 loss=0.20322 pairs_per_sec=12.69 eta~56m 44s peak_vram_gb=5.81
+session=1 epoch=3/10 step=100/120 loss=0.20137 pairs_per_sec=12.75 eta~56m 02s peak_vram_gb=5.81
+session=1 epoch=3/10 step=110/120 loss=0.20066 pairs_per_sec=12.81 eta~55m 22s peak_vram_gb=5.81
+session=1 epoch=3/10 step=120/120 loss=0.20104 pairs_per_sec=12.86 eta~54m 46s peak_vram_gb=5.81
+evaluation={"epoch": 3, "train_loss": 0.20104015258451302, "processed_train_pairs": 3840, "seconds": 438.3171353340149, "accuracy": 0.7265625, "threshold": 0.4686081454157829, "auc": 0.7847840711805556, "eer": 0.2796875, "eer_threshold": 0.4307012993842363, "far_at_eer": 0.2791666666666667, "frr_at_eer": 0.28020833333333334, "positive_mean_distance": 0.37893542647361755, "negative_mean_distance": 0.6250731348991394}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7266 auc=0.7848
+session=1 epoch=4/10 step=1/120 loss=0.17172 pairs_per_sec=4.87 eta~2h 17m 44s peak_vram_gb=5.81
+session=1 epoch=4/10 step=10/120 loss=0.17880 pairs_per_sec=9.25 eta~1h 12m 04s peak_vram_gb=5.81
+session=1 epoch=4/10 step=20/120 loss=0.19641 pairs_per_sec=10.71 eta~1h 01m 44s peak_vram_gb=5.81
+session=1 epoch=4/10 step=30/120 loss=0.19467 pairs_per_sec=11.31 eta~58m 01s peak_vram_gb=5.81
+session=1 epoch=4/10 step=40/120 loss=0.19545 pairs_per_sec=11.89 eta~54m 44s peak_vram_gb=5.81
+session=1 epoch=4/10 step=50/120 loss=0.19423 pairs_per_sec=12.02 eta~53m 41s peak_vram_gb=5.81
+session=1 epoch=4/10 step=60/120 loss=0.19369 pairs_per_sec=12.27 eta~52m 10s peak_vram_gb=5.81
+session=1 epoch=4/10 step=70/120 loss=0.19286 pairs_per_sec=12.37 eta~51m 18s peak_vram_gb=5.81
+session=1 epoch=4/10 step=80/120 loss=0.19343 pairs_per_sec=12.40 eta~50m 45s peak_vram_gb=5.81
+session=1 epoch=4/10 step=90/120 loss=0.19250 pairs_per_sec=12.54 eta~49m 45s peak_vram_gb=5.81
+session=1 epoch=4/10 step=100/120 loss=0.19068 pairs_per_sec=12.59 eta~49m 09s peak_vram_gb=5.81
+session=1 epoch=4/10 step=110/120 loss=0.18988 pairs_per_sec=12.69 eta~48m 20s peak_vram_gb=5.81
+session=1 epoch=4/10 step=120/120 loss=0.19068 pairs_per_sec=12.74 eta~47m 44s peak_vram_gb=5.81
+evaluation={"epoch": 4, "train_loss": 0.1906817901879549, "processed_train_pairs": 3840, "seconds": 437.88709473609924, "accuracy": 0.7338541666666667, "threshold": 0.47208950302004815, "auc": 0.7979958767361112, "eer": 0.2713541666666667, "eer_threshold": 0.4475024963319302, "far_at_eer": 0.2708333333333333, "frr_at_eer": 0.271875, "positive_mean_distance": 0.3806498646736145, "negative_mean_distance": 0.6650749444961548}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7339 auc=0.7980
+session=1 epoch=5/10 step=1/120 loss=0.19814 pairs_per_sec=5.81 eta~1h 39m 00s peak_vram_gb=5.81
+session=1 epoch=5/10 step=10/120 loss=0.18053 pairs_per_sec=10.27 eta~55m 35s peak_vram_gb=5.81
+session=1 epoch=5/10 step=20/120 loss=0.18721 pairs_per_sec=11.40 eta~49m 37s peak_vram_gb=5.81
+session=1 epoch=5/10 step=30/120 loss=0.18524 pairs_per_sec=11.89 eta~47m 06s peak_vram_gb=5.81
+session=1 epoch=5/10 step=40/120 loss=0.18539 pairs_per_sec=12.43 eta~44m 37s peak_vram_gb=5.81
+session=1 epoch=5/10 step=50/120 loss=0.18610 pairs_per_sec=12.50 eta~43m 57s peak_vram_gb=5.81
+session=1 epoch=5/10 step=60/120 loss=0.18612 pairs_per_sec=12.72 eta~42m 46s peak_vram_gb=5.81
+session=1 epoch=5/10 step=70/120 loss=0.18407 pairs_per_sec=12.80 eta~42m 04s peak_vram_gb=5.81
+session=1 epoch=5/10 step=80/120 loss=0.18530 pairs_per_sec=12.88 eta~41m 24s peak_vram_gb=5.81
+session=1 epoch=5/10 step=90/120 loss=0.18507 pairs_per_sec=13.00 eta~40m 36s peak_vram_gb=5.81
+session=1 epoch=5/10 step=100/120 loss=0.18294 pairs_per_sec=13.03 eta~40m 07s peak_vram_gb=5.81
+session=1 epoch=5/10 step=110/120 loss=0.18250 pairs_per_sec=13.14 eta~39m 22s peak_vram_gb=5.81
+session=1 epoch=5/10 step=120/120 loss=0.18287 pairs_per_sec=13.15 eta~38m 56s peak_vram_gb=5.81
+evaluation={"epoch": 5, "train_loss": 0.18286623681584993, "processed_train_pairs": 3840, "seconds": 424.98695492744446, "accuracy": 0.740625, "threshold": 0.46721488651633264, "auc": 0.8101920572916667, "eer": 0.2640625, "eer_threshold": 0.44493436328321695, "far_at_eer": 0.2635416666666667, "frr_at_eer": 0.26458333333333334, "positive_mean_distance": 0.37575024366378784, "negative_mean_distance": 0.6606298089027405}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7406 auc=0.8102
+session=1 epoch=6/10 step=1/120 loss=0.19576 pairs_per_sec=6.28 eta~1h 16m 20s peak_vram_gb=5.81
+session=1 epoch=6/10 step=10/120 loss=0.17402 pairs_per_sec=10.46 eta~45m 21s peak_vram_gb=5.81
+session=1 epoch=6/10 step=20/120 loss=0.17943 pairs_per_sec=10.92 eta~43m 00s peak_vram_gb=5.81
+session=1 epoch=6/10 step=30/120 loss=0.17644 pairs_per_sec=11.79 eta~39m 21s peak_vram_gb=5.81
+session=1 epoch=6/10 step=40/120 loss=0.17590 pairs_per_sec=12.21 eta~37m 33s peak_vram_gb=5.81
+session=1 epoch=6/10 step=50/120 loss=0.17585 pairs_per_sec=12.42 eta~36m 30s peak_vram_gb=5.81
+session=1 epoch=6/10 step=60/120 loss=0.17630 pairs_per_sec=12.69 eta~35m 18s peak_vram_gb=5.81
+session=1 epoch=6/10 step=70/120 loss=0.17520 pairs_per_sec=12.74 eta~34m 44s peak_vram_gb=5.81
+session=1 epoch=6/10 step=80/120 loss=0.17552 pairs_per_sec=12.92 eta~33m 51s peak_vram_gb=5.81
+session=1 epoch=6/10 step=90/120 loss=0.17579 pairs_per_sec=12.94 eta~33m 22s peak_vram_gb=5.81
+session=1 epoch=6/10 step=100/120 loss=0.17542 pairs_per_sec=13.09 eta~32m 36s peak_vram_gb=5.81
+session=1 epoch=6/10 step=110/120 loss=0.17522 pairs_per_sec=13.09 eta~32m 12s peak_vram_gb=5.81
+session=1 epoch=6/10 step=120/120 loss=0.17531 pairs_per_sec=13.09 eta~31m 47s peak_vram_gb=5.81
+evaluation={"epoch": 6, "train_loss": 0.17530972138047218, "processed_train_pairs": 3840, "seconds": 426.26374197006226, "accuracy": 0.7427083333333333, "threshold": 0.47251822519302367, "auc": 0.8109195963541667, "eer": 0.2708333333333333, "eer_threshold": 0.4254236516952514, "far_at_eer": 0.26875, "frr_at_eer": 0.27291666666666664, "positive_mean_distance": 0.3593767583370209, "negative_mean_distance": 0.6279978156089783}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7427 auc=0.8109
+session=1 epoch=7/10 step=1/120 loss=0.20451 pairs_per_sec=6.49 eta~59m 03s peak_vram_gb=5.81
+session=1 epoch=7/10 step=10/120 loss=0.16577 pairs_per_sec=10.12 eta~37m 25s peak_vram_gb=5.81
+session=1 epoch=7/10 step=20/120 loss=0.17528 pairs_per_sec=11.65 eta~32m 02s peak_vram_gb=5.81
+session=1 epoch=7/10 step=30/120 loss=0.17119 pairs_per_sec=12.21 eta~30m 08s peak_vram_gb=5.81
+session=1 epoch=7/10 step=40/120 loss=0.17340 pairs_per_sec=12.49 eta~29m 02s peak_vram_gb=5.81
+session=1 epoch=7/10 step=50/120 loss=0.17277 pairs_per_sec=12.71 eta~28m 06s peak_vram_gb=5.81
+session=1 epoch=7/10 step=60/120 loss=0.17199 pairs_per_sec=12.76 eta~27m 35s peak_vram_gb=5.81
+session=1 epoch=7/10 step=70/120 loss=0.17135 pairs_per_sec=12.86 eta~26m 57s peak_vram_gb=5.81
+session=1 epoch=7/10 step=80/120 loss=0.17152 pairs_per_sec=12.85 eta~26m 34s peak_vram_gb=5.81
+session=1 epoch=7/10 step=90/120 loss=0.17117 pairs_per_sec=12.86 eta~26m 07s peak_vram_gb=5.81
+session=1 epoch=7/10 step=100/120 loss=0.16995 pairs_per_sec=12.99 eta~25m 27s peak_vram_gb=5.81
+session=1 epoch=7/10 step=110/120 loss=0.16973 pairs_per_sec=13.02 eta~24m 59s peak_vram_gb=5.81
+session=1 epoch=7/10 step=120/120 loss=0.17061 pairs_per_sec=13.10 eta~24m 26s peak_vram_gb=5.81
+evaluation={"epoch": 7, "train_loss": 0.17061147335916757, "processed_train_pairs": 3840, "seconds": 427.60282802581787, "accuracy": 0.7505208333333333, "threshold": 0.4249908170774579, "auc": 0.8159559461805556, "eer": 0.2567708333333333, "eer_threshold": 0.4139914046004415, "far_at_eer": 0.25625, "frr_at_eer": 0.25729166666666664, "positive_mean_distance": 0.34883102774620056, "negative_mean_distance": 0.6161496639251709}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7505 auc=0.8160
+session=1 epoch=8/10 step=1/120 loss=0.17374 pairs_per_sec=6.62 eta~43m 24s peak_vram_gb=5.81
+session=1 epoch=8/10 step=10/120 loss=0.16254 pairs_per_sec=9.83 eta~28m 45s peak_vram_gb=5.81
+session=1 epoch=8/10 step=20/120 loss=0.17232 pairs_per_sec=10.60 eta~26m 09s peak_vram_gb=5.81
+session=1 epoch=8/10 step=30/120 loss=0.16829 pairs_per_sec=11.62 eta~23m 24s peak_vram_gb=5.81
+session=1 epoch=8/10 step=40/120 loss=0.16973 pairs_per_sec=11.94 eta~22m 20s peak_vram_gb=5.81
+session=1 epoch=8/10 step=50/120 loss=0.16966 pairs_per_sec=12.23 eta~21m 22s peak_vram_gb=5.81
+session=1 epoch=8/10 step=60/120 loss=0.16974 pairs_per_sec=12.40 eta~20m 39s peak_vram_gb=5.81
+session=1 epoch=8/10 step=70/120 loss=0.16829 pairs_per_sec=12.48 eta~20m 05s peak_vram_gb=5.81
+session=1 epoch=8/10 step=80/120 loss=0.16854 pairs_per_sec=12.62 eta~19m 26s peak_vram_gb=5.81
+session=1 epoch=8/10 step=90/120 loss=0.16895 pairs_per_sec=12.62 eta~19m 01s peak_vram_gb=5.81
+session=1 epoch=8/10 step=100/120 loss=0.16751 pairs_per_sec=12.72 eta~18m 27s peak_vram_gb=5.81
+session=1 epoch=8/10 step=110/120 loss=0.16732 pairs_per_sec=12.75 eta~17m 59s peak_vram_gb=5.81
+session=1 epoch=8/10 step=120/120 loss=0.16720 pairs_per_sec=12.74 eta~17m 35s peak_vram_gb=5.81
+evaluation={"epoch": 8, "train_loss": 0.1672019235789776, "processed_train_pairs": 3840, "seconds": 438.18759751319885, "accuracy": 0.7515625, "threshold": 0.45133878652751447, "auc": 0.8227278645833334, "eer": 0.26093750000000004, "eer_threshold": 0.3970591265261173, "far_at_eer": 0.259375, "frr_at_eer": 0.2625, "positive_mean_distance": 0.33655884861946106, "negative_mean_distance": 0.6392828822135925}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7516 auc=0.8227
+session=1 epoch=9/10 step=1/120 loss=0.16260 pairs_per_sec=6.39 eta~29m 56s peak_vram_gb=5.81
+session=1 epoch=9/10 step=10/120 loss=0.15930 pairs_per_sec=9.81 eta~19m 02s peak_vram_gb=5.81
+session=1 epoch=9/10 step=20/120 loss=0.16587 pairs_per_sec=10.92 eta~16m 37s peak_vram_gb=5.81
+session=1 epoch=9/10 step=30/120 loss=0.16180 pairs_per_sec=11.68 eta~15m 04s peak_vram_gb=5.81
+session=1 epoch=9/10 step=40/120 loss=0.16235 pairs_per_sec=12.04 eta~14m 10s peak_vram_gb=5.81
+session=1 epoch=9/10 step=50/120 loss=0.16214 pairs_per_sec=12.14 eta~13m 37s peak_vram_gb=5.81
+session=1 epoch=9/10 step=60/120 loss=0.16261 pairs_per_sec=12.40 eta~12m 54s peak_vram_gb=5.81
+session=1 epoch=9/10 step=70/120 loss=0.16145 pairs_per_sec=12.44 eta~12m 26s peak_vram_gb=5.81
+session=1 epoch=9/10 step=80/120 loss=0.16264 pairs_per_sec=12.54 eta~11m 55s peak_vram_gb=5.81
+session=1 epoch=9/10 step=90/120 loss=0.16265 pairs_per_sec=12.63 eta~11m 24s peak_vram_gb=5.81
+session=1 epoch=9/10 step=100/120 loss=0.16162 pairs_per_sec=12.68 eta~10m 56s peak_vram_gb=5.81
+session=1 epoch=9/10 step=110/120 loss=0.16162 pairs_per_sec=12.79 eta~10m 25s peak_vram_gb=5.81
+session=1 epoch=9/10 step=120/120 loss=0.16202 pairs_per_sec=12.77 eta~10m 02s peak_vram_gb=5.81
+evaluation={"epoch": 9, "train_loss": 0.16201571691781283, "processed_train_pairs": 3840, "seconds": 437.53688740730286, "accuracy": 0.7510416666666667, "threshold": 0.48242445379495624, "auc": 0.8227007378472222, "eer": 0.259375, "eer_threshold": 0.41509660199284554, "far_at_eer": 0.2604166666666667, "frr_at_eer": 0.25833333333333336, "positive_mean_distance": 0.3465019166469574, "negative_mean_distance": 0.651256799697876}
+session=1 epoch=10/10 step=1/120 loss=0.18443 pairs_per_sec=5.45 eta~17m 32s peak_vram_gb=5.81
+session=1 epoch=10/10 step=10/120 loss=0.15001 pairs_per_sec=12.18 eta~7m 27s peak_vram_gb=5.81
+session=1 epoch=10/10 step=20/120 loss=0.15969 pairs_per_sec=12.99 eta~6m 34s peak_vram_gb=5.81
+session=1 epoch=10/10 step=30/120 loss=0.15862 pairs_per_sec=12.86 eta~6m 13s peak_vram_gb=5.81
+session=1 epoch=10/10 step=40/120 loss=0.15767 pairs_per_sec=12.83 eta~5m 49s peak_vram_gb=5.81
+session=1 epoch=10/10 step=50/120 loss=0.15791 pairs_per_sec=12.98 eta~5m 21s peak_vram_gb=5.81
+session=1 epoch=10/10 step=60/120 loss=0.15778 pairs_per_sec=12.94 eta~4m 57s peak_vram_gb=5.81
+session=1 epoch=10/10 step=70/120 loss=0.15700 pairs_per_sec=12.92 eta~4m 32s peak_vram_gb=5.81
+session=1 epoch=10/10 step=80/120 loss=0.15771 pairs_per_sec=12.99 eta~4m 06s peak_vram_gb=5.81
+session=1 epoch=10/10 step=90/120 loss=0.15781 pairs_per_sec=12.97 eta~3m 42s peak_vram_gb=5.81
+session=1 epoch=10/10 step=100/120 loss=0.15708 pairs_per_sec=13.07 eta~3m 16s peak_vram_gb=5.81
+session=1 epoch=10/10 step=110/120 loss=0.15700 pairs_per_sec=13.05 eta~2m 52s peak_vram_gb=5.81
+session=1 epoch=10/10 step=120/120 loss=0.15742 pairs_per_sec=13.06 eta~2m 27s peak_vram_gb=5.81
+evaluation={"epoch": 10, "train_loss": 0.1574166748051842, "processed_train_pairs": 3840, "seconds": 430.2079725265503, "accuracy": 0.7520833333333333, "threshold": 0.46175508320331576, "auc": 0.8251725260416667, "eer": 0.25364583333333335, "eer_threshold": 0.39470718160271645, "far_at_eer": 0.25416666666666665, "frr_at_eer": 0.253125, "positive_mean_distance": 0.32338204979896545, "negative_mean_distance": 0.6322543025016785}
+saved_best_checkpoint=/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt accuracy=0.7521 auc=0.8252
+training_complete={"script": "train_gpds_sampled.py", "session_id": 1, "seed": 2026, "device": "Tesla T4", "parameters": 96980311, "gpds_root": "/content/rest_gpds_32pairs_data/gpds", "writers_found": 150, "train_writers_count": 120, "test_writers_count": 30, "train_pairs_per_epoch": 3840, "eval_pairs_per_epoch": 1920, "planned_train_pairs_total": 38400, "planned_eval_pairs_total": 19200, "planned_total_pairs_train_plus_eval": 57600, "pairs_per_training_writer_per_epoch": 32, "pairs_per_test_writer": 64, "batch_size": 32, "epochs": 10, "learning_rate": 5e-05, "random_erasing": false, "augmentation": ["Gaussian blur + Otsu + inversion + centering", "training only: random rotation [-5,+5] degrees", "training only: horizontal flip p=0.5", "training only: random 224x224 crop from 256x256", "optional RandomErasing if --random-erasing is used"], "normalization": ["ImageNet input mean/std", "BatchNorm in shared Conv, SPD-Conv, and ResNet-18", "GroupNorm in SCConv SRU", "LayerNorm in ViT"], "initialization": {"source": "Google ViT-B/16 ImageNet-21k", "path": "/content/drive/MyDrive/ResT/ViT-B_16.npz", "tensors": 150, "elements": 85798656}, "checkpoint": "/content/drive/MyDrive/ResT/checkpoints/rest_gpds_32pairs_10epochs_best.pt", "checkpoint_bytes": 388086212, "elapsed_seconds": 4343.692674875259, "elapsed_human": "1h 12m 24s", "best_accuracy": 0.7520833333333333, "train_writers": ["gpds:002", "gpds:004", "gpds:005", "gpds:006", "gpds:007", "gpds:008", "gpds:009", "gpds:010", "gpds:011", "gpds:012", "gpds:013", "gpds:014", "gpds:015", "gpds:016", "gpds:017", "gpds:018", "gpds:019", "gpds:020", "gpds:022", "gpds:023", "gpds:024", "gpds:025", "gpds:028", "gpds:030", "gpds:032", "gpds:034", "gpds:035", "gpds:036", "gpds:037", "gpds:038", "gpds:039", "gpds:040", "gpds:041", "gpds:042", "gpds:043", "gpds:044", "gpds:047", "gpds:048", "gpds:050", "gpds:051", "gpds:052", "gpds:053", "gpds:055", "gpds:056", "gpds:057", "gpds:059", "gpds:060", "gpds:061", "gpds:063", "gpds:064", "gpds:065", "gpds:066", "gpds:067", "gpds:068", "gpds:069", "gpds:070", "gpds:071", "gpds:072", "gpds:073", "gpds:075", "gpds:076", "gpds:077", "gpds:078", "gpds:079", "gpds:080", "gpds:083", "gpds:084", "gpds:085", "gpds:086", "gpds:087", "gpds:088", "gpds:089", "gpds:090", "gpds:091", "gpds:092", "gpds:093", "gpds:094", "gpds:095", "gpds:097", "gpds:098", "gpds:099", "gpds:100", "gpds:101", "gpds:103", "gpds:105", "gpds:106", "gpds:107", "gpds:109", "gpds:110", "gpds:111", "gpds:112", "gpds:114", "gpds:115", "gpds:117", "gpds:118", "gpds:120", "gpds:121", "gpds:122", "gpds:123", "gpds:124", "gpds:125", "gpds:127", "gpds:128", "gpds:130", "gpds:131", "gpds:133", "gpds:134", "gpds:135", "gpds:136", "gpds:137", "gpds:138", "gpds:139", "gpds:140", "gpds:144", "gpds:145", "gpds:146", "gpds:147", "gpds:148", "gpds:149", "gpds:150"], "test_writers": ["gpds:001", "gpds:003", "gpds:021", "gpds:026", "gpds:027", "gpds:029", "gpds:031", "gpds:033", "gpds:045", "gpds:046", "gpds:049", "gpds:054", "gpds:058", "gpds:062", "gpds:074", "gpds:081", "gpds:082", "gpds:096", "gpds:102", "gpds:104", "gpds:108", "gpds:113", "gpds:116", "gpds:119", "gpds:126", "gpds:129", "gpds:132", "gpds:141", "gpds:142", "gpds:143"], "history": [{"epoch": 1, "train_loss": 5.2983380323896805, "processed_train_pairs": 3840, "seconds": 434.06018018722534, "accuracy": 0.6515625, "threshold": 0.5590423280745744, "auc": 0.7041265190972222, "eer": 0.3515625, "eer_threshold": 0.5348168831318616, "far_at_eer": 0.353125, "frr_at_eer": 0.35, "positive_mean_distance": 0.5108487010002136, "negative_mean_distance": 0.6894198060035706}, {"epoch": 2, "train_loss": 0.22174109381934007, "processed_train_pairs": 3840, "seconds": 412.2155945301056, "accuracy": 0.7052083333333333, "threshold": 0.49964807847142223, "auc": 0.7599793836805555, "eer": 0.3041666666666667, "eer_threshold": 0.4620674943774939, "far_at_eer": 0.30520833333333336, "frr_at_eer": 0.303125, "positive_mean_distance": 0.41065865755081177, "negative_mean_distance": 0.6201487183570862}, {"epoch": 3, "train_loss": 0.20104015258451302, "processed_train_pairs": 3840, "seconds": 438.3171353340149, "accuracy": 0.7265625, "threshold": 0.4686081454157829, "auc": 0.7847840711805556, "eer": 0.2796875, "eer_threshold": 0.4307012993842363, "far_at_eer": 0.2791666666666667, "frr_at_eer": 0.28020833333333334, "positive_mean_distance": 0.37893542647361755, "negative_mean_distance": 0.6250731348991394}, {"epoch": 4, "train_loss": 0.1906817901879549, "processed_train_pairs": 3840, "seconds": 437.88709473609924, "accuracy": 0.7338541666666667, "threshold": 0.47208950302004815, "auc": 0.7979958767361112, "eer": 0.2713541666666667, "eer_threshold": 0.4475024963319302, "far_at_eer": 0.2708333333333333, "frr_at_eer": 0.271875, "positive_mean_distance": 0.3806498646736145, "negative_mean_distance": 0.6650749444961548}, {"epoch": 5, "train_loss": 0.18286623681584993, "processed_train_pairs": 3840, "seconds": 424.98695492744446, "accuracy": 0.740625, "threshold": 0.46721488651633264, "auc": 0.8101920572916667, "eer": 0.2640625, "eer_threshold": 0.44493436328321695, "far_at_eer": 0.2635416666666667, "frr_at_eer": 0.26458333333333334, "positive_mean_distance": 0.37575024366378784, "negative_mean_distance": 0.6606298089027405}, {"epoch": 6, "train_loss": 0.17530972138047218, "processed_train_pairs": 3840, "seconds": 426.26374197006226, "accuracy": 0.7427083333333333, "threshold": 0.47251822519302367, "auc": 0.8109195963541667, "eer": 0.2708333333333333, "eer_threshold": 0.4254236516952514, "far_at_eer": 0.26875, "frr_at_eer": 0.27291666666666664, "positive_mean_distance": 0.3593767583370209, "negative_mean_distance": 0.6279978156089783}, {"epoch": 7, "train_loss": 0.17061147335916757, "processed_train_pairs": 3840, "seconds": 427.60282802581787, "accuracy": 0.7505208333333333, "threshold": 0.4249908170774579, "auc": 0.8159559461805556, "eer": 0.2567708333333333, "eer_threshold": 0.4139914046004415, "far_at_eer": 0.25625, "frr_at_eer": 0.25729166666666664, "positive_mean_distance": 0.34883102774620056, "negative_mean_distance": 0.6161496639251709}, {"epoch": 8, "train_loss": 0.1672019235789776, "processed_train_pairs": 3840, "seconds": 438.18759751319885, "accuracy": 0.7515625, "threshold": 0.45133878652751447, "auc": 0.8227278645833334, "eer": 0.26093750000000004, "eer_threshold": 0.3970591265261173, "far_at_eer": 0.259375, "frr_at_eer": 0.2625, "positive_mean_distance": 0.33655884861946106, "negative_mean_distance": 0.6392828822135925}, {"epoch": 9, "train_loss": 0.16201571691781283, "processed_train_pairs": 3840, "seconds": 437.53688740730286, "accuracy": 0.7510416666666667, "threshold": 0.48242445379495624, "auc": 0.8227007378472222, "eer": 0.259375, "eer_threshold": 0.41509660199284554, "far_at_eer": 0.2604166666666667, "frr_at_eer": 0.25833333333333336, "positive_mean_distance": 0.3465019166469574, "negative_mean_distance": 0.651256799697876}, {"epoch": 10, "train_loss": 0.1574166748051842, "processed_train_pairs": 3840, "seconds": 430.2079725265503, "accuracy": 0.7520833333333333, "threshold": 0.46175508320331576, "auc": 0.8251725260416667, "eer": 0.25364583333333335, "eer_threshold": 0.39470718160271645, "far_at_eer": 0.25416666666666665, "frr_at_eer": 0.253125, "positive_mean_distance": 0.32338204979896545, "negative_mean_distance": 0.6322543025016785}]}
