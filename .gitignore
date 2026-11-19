@@ -1,7 +1,3 @@
-# Local datasets, model weights, and archives
-*.zip
-*.npz
-*.pt
 __pycache__/
 *.py[cod]
 .venv/
